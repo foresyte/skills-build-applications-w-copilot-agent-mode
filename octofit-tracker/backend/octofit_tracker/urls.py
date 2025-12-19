@@ -1,17 +1,13 @@
-"""octofit_tracker URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+Octofit Tracker URL Configuration
+
+REST API endpoints are available at:
+    https://$CODESPACE_NAME-8000.app.github.dev/api/[component]/
+where $CODESPACE_NAME is the environment variable for your codespace name.
+Example: https://$CODESPACE_NAME-8000.app.github.dev/api/activities/
+
+Do not hardcode $CODESPACE_NAME. Django will serve endpoints at /api/[component]/, and your codespace URL will route requests correctly.
 """
 
 from django.contrib import admin
@@ -29,5 +25,5 @@ router.register(r'leaderboard', LeaderboardViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', api_root, name='api-root'),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),  # All API endpoints are under /api/
 ]
